@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="task-container">
-        <div class="Back-styles">
+        <div class="back-container"> 
             <a href="index.html"><button class="back-button">BACK</button></a>  
         </div>
 
@@ -45,6 +45,7 @@
                     echo "<td>"; 
                     echo "<a href='editTask.php?id=" . $row['id'] . "'><button class='edit-button'>Edit</button></a> "; 
                     echo "<a href='deleteTask.php?id=" . $row['id'] . "'><button class='delete-button'>Delete</button></a>";
+                    echo "</td>";
                     echo "</tr>";
                 }
             } else {
@@ -53,7 +54,6 @@
 
             mysqli_close($conn);
              ?>
-           
             </tbody>
         </table>
     </div>
