@@ -1,6 +1,6 @@
 <?php 
 
-    $dc_server = "localhost:3308";
+    $dc_server = "localhost:3306";
     $db_user = "root";
     $db_pass = ""; 
     $db_name = "taskmanager";

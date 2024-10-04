@@ -21,30 +21,34 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Due Date</th>
+                    <th>Actions</th> 
                 </tr>
             </thead>
             <tbody>
              <?php
               include("database.php");
 
-            if($conn-> connect_error){
+            if($conn->connect_error){
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $sql = "SELECT * FROM tasks"; // Define the SQL query
+            $sql = "SELECT * FROM tasks"; 
             $result = mysqli_query($conn, $sql);
 
             if(mysqli_num_rows($result) > 0){
-                while($row = mysqli_fetch_assoc($result)){ // Loop through the results
+                while($row = mysqli_fetch_assoc($result)){ 
                     echo "<tr>";
                     echo "<td>" . $row['id'] . "</td>";
                     echo "<td>" . $row['title'] . "</td>";
                     echo "<td>" . $row['description'] . "</td>";
                     echo "<td>" . $row['duedate'] . "</td>";
+                    echo "<td>"; 
+                    echo "<a href='editTask.php?id=" . $row['id'] . "'><button class='edit-button'>Edit</button></a> "; 
+                    echo "<a href='deleteTask.php?id=" . $row['id'] . "'><button class='delete-button'>Delete</button></a>";
                     echo "</tr>";
                 }
             } else {
-                echo "<tr><td colspan='4'>No tasks found</td></tr>";
+                echo "<tr><td colspan='5'>No tasks found</td></tr>"; 
             }
 
             mysqli_close($conn);
